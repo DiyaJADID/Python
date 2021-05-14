@@ -1,0 +1,91 @@
+from tkinter import ttk
+from tkinter import *
+import sqlite3
+
+root = Tk()
+root.title("Adres Defteri")
+root.geometry("1000x500-0+100")
+
+Ad_Soyad = StringVar()
+Telefon_Numara =  StringVar()
+Fotograf = StringVar()
+Nott = StringVar()
+
+ust = Frame(root,width=1000,height=50,relief=GROOVE, bd=5)
+ust.pack(side=TOP)
+sol = Frame(root,width=400,height=450,relief=RAISED, bd=3)
+sol.pack(side=LEFT, expand=TRUE, fill=BOTH)
+sag =Frame(root,width=600,height=450,relief=RAISED, bd=3)
+sag.pack(side=RIGHT, expand=TRUE, fill=BOTH)
+
+fromFrame = Frame(sol,width=400,height=350,relief=GROOVE, bd=3)
+fromFrame.pack(side=TOP, expand=TRUE, fill=BOTH)
+dugmeFrame = Frame(sol,width=400,height=100,relief=GROOVE, bd=3)
+dugmeFrame.pack(side=LEFT)
+
+lbl_baslik = Label(ust,width=900, font=('Arial',30), text="Adres Defteri")
+lbl_baslik.pack()
+fo = ("Time New Roman",13)
+lbl_AdSoyad = Label(fromFrame, text="Ad Soyad", font=fo, relief=FLAT)
+lbl_AdSoyad.grid(row=0, column=0, sticky=W)
+lbl_TelefonNumara = Label(fromFrame, text="Telefon Numarası", font=fo, relief=FLAT)
+lbl_TelefonNumara.grid(row=1, column=0, sticky=W)
+lbl_Fotograf = Label(fromFrame, text="Fotoğraf", font=fo, relief=FLAT)
+lbl_Fotograf.grid(row=2, column=0, sticky=W)
+lbl_Not = Label(fromFrame, text="Not", font=fo, relief=FLAT)
+lbl_Not.grid(row=3, column=0, sticky=W)
+
+lbl_sonuc = Label(fromFrame, text="...", font=fo, relief=SUNKEN)
+lbl_sonuc.grid(row=6, column=0, columnspan=2, sticky=EW)
+
+e_AdSoyad = Entry(fromFrame, textvariable=Ad_Soyad, font=fo, width=30)
+e_AdSoyad.grid(row=0, column=1, sticky=E)
+e_TelefonNumara = Entry(fromFrame, textvariable=Telefon_Numara, font=fo, width=30)
+e_TelefonNumara.grid(row=1, column=1, sticky=E)
+e_Fotograf = Entry(fromFrame, textvariable=Fotograf, font=fo, width=15)
+e_Fotograf.grid(row=2, column=1, sticky=W)
+e_Not = Entry(fromFrame, textvariable=Nott, font=fo, width=30)
+e_Not.grid(row=3, column=1, sticky=E)
+
+btn_Kaydet = Button(fromFrame, width=10, text="Kaydet", command=kaydett, bg="Light Gray", fg="RED")
+btn_Kaydet.grid(row=4, column=2, sticky=W)
+btn_Gozat = Button(fromFrame, width=10, text="Gözat", bg="YELLOW", command=resim)
+btn_Gozat.grid(row=2, column=2, sticky=W)
+btn_KayitGoster = Button(dugmeFrame, width=10, text="Kayıtları Göster", bg="YELLOW", command=kayitlariekle)
+btn_KayitGoster.pack(side=TOP, expand=TRUE, fill=BOTH)
+btn_KayitSil = Button(dugmeFrame, width=10, text="Kayıt Sil", bg="YELLOW", command=sil)
+btn_KayitSil.pack(side=TOP, expand=TRUE, fill=BOTH)
+btn_KayitDuzenle = Button(dugmeFrame, width=11, text="Kayıt Düzenle", bg="YELLOW")
+btn_KayitDuzenle.pack(side=TOP, expand=TRUE, fill=BOTH)
+btn_IsmeGoreSirala = Button(dugmeFrame, width=15, text="İsme Göre Sırala", bg="YELLOW", comman=sirala)
+btn_IsmeGoreSirala.pack(side=TOP, expand=TRUE, fill=BOTH)
+btn_Cikis = Button(dugmeFrame, width=10, text="Çıkış", bg="YELLOW",command=cik)
+btn_Cikis.pack(side=TOP, expand=TRUE, fill=BOTH)
+
+TABLO EKLEME
+
+skrol_yatay = Scrollbar(sag, orient=HORIZONTAL)
+skrol_dikey = Scrollbar(sag, orient=VERTICAL)
+
+tree = ttk.Treeview(sag, columns=("id","Ad Soyad","Telefon Numarası","Not"),
+                    selectmode="extended", height=450, yscrollcommand=skrol_dikey.set,xscrollcommand=skrol_yatay.set)
+
+skrol_dikey["command"] = tree.yview
+skrol_dikey.pack(side=RIGHT,fill=Y)
+skrol_yatay["command"] = tree.xview
+skrol_yatay.pack(side=BOTTOM,fill=X)
+
+tree.heading('id',text="id",anchor=W)
+tree.heading('Ad Soyad',text="Ad Soyad",anchor=W)
+tree.heading('Telefon Numarası',text="Telefon Numarası",anchor=W)
+tree.heading('Not',text="Not",anchor=W)
+
+tree.column('#0',stretch=NO,minwidth=0,width=0)
+tree.column('#1',stretch=NO,minwidth=0,width=75)
+tree.column('#2',stretch=NO,minwidth=0,width=120)
+tree.column('#3',stretch=NO,minwidth=0,width=150)
+tree.column('#4',stretch=NO,minwidth=0,width=120)
+
+tree.pack()
+
+root.mainloop()
