@@ -1,0 +1,127 @@
+
+MENÜ SAYFASI
+
+from tkinter import filedialog
+import sqlite3
+
+root = Tk()
+root.title("Dukkan")
+root.geometry("1000x500-0+100")
+
+baslik = Label(text="Menü", font=("Calibri",25), bd=5 , bg="Light Gray" , width=60)
+baslik.place(x=1, y=1)
+
+btn_Urun = Button(text=("Ürün Ekranı"), bg=("Powder Blue"),width=25,height=2)
+btn_Urun.place(x=250, y=230)
+btn_Stok = Button(text=("Stok Ekranı"), bg=("Powder Blue"),width=25,height=2)
+btn_Stok.place(x=600, y=230)
+
+vtbaglan()
+root.mainloop()
+
+ÜRÜN EKRANI
+
+
+from tkinter import ttk
+from tkinter import *
+from tkinter import messagebox
+from tkinter import filedialog
+import sqlite3
+
+root = Tk()
+root.title("Ürün Ekranı")
+root.geometry("1000x500-0+100")
+
+baslikk = Label(text="Ürün", font=("Calibri",25), bd=5 , bg="Light Gray" , width=60)
+baslikk.place(x=1, y=1)
+
+UrunAd = Label(text="Ürün Adı", font=("Calibri",15))
+UrunAd.place(x=10, y=75)
+UrunFiyat = Label(text="Ürün Fiyatı", font=("Calibri",15))
+UrunFiyat.place(x=10, y=120)
+Kdv = Label(text="KDV", font=("Calibri",15))
+Kdv.place(x=10, y=165)
+
+UrunAdd = Entry(text="Ürün Adı", font=("Calibri",15))
+UrunAdd.place(x=110, y=75)
+UrunFiyatt = Entry(text="Ürün Fiyatı", font=("Calibri",15))
+UrunFiyatt.place(x=110, y=120)
+Kdvv = Entry(text="KDV", font=("Calibri",15))
+Kdvv.place(x=110, y=165)
+
+btn_Kaydet = Button(text=("Kaydet"), bg=("Powder Blue"),width=25,height=2,command=kaydett)
+btn_Kaydet.place(x=500, y=90)
+btn_Güncelle = Button(text=("Güncelle"), bg=("Powder Blue"),width=25,height=2)
+btn_Güncelle.place(x=700, y=90)
+btn_Sil = Button(text=("Sil"), bg=("Powder Blue"),width=25,height=2)
+btn_Sil.place(x=500, y=150)
+btn_MenuDon = Button(text=("Menüye Dön"), bg=("Powder Blue"),width=25,height=2)
+btn_MenuDon.place(x=700, y=150)
+
+tree = ttk.Treeview(root, columns=("id", "Urun Ad", "Urun Fiyat", "KDV"),
+                    selectmode='extended')
+
+tree.heading("id", text="ID", anchor=W)
+tree.heading("Urun Ad", text="Ürün Adı", anchor=W)
+tree.heading("Urun Fiyat", text="Ürün Fiyatı", anchor=W)
+tree.heading("KDV", text="KDV", anchor=W)
+
+tree.column("#0", stretch=NO, minwidth=0, width=0)
+tree.column("#1", stretch=NO, minwidth=0, width=200)
+tree.column("#2", stretch=NO, minwidth=0, width=200)
+tree.column("#3", stretch=NO, minwidth=0, width=200)
+
+
+tree.place(x=100, y=230, width=850, height=260)
+
+root.mainloop()
+
+
+
+STOK EKRANI
+
+
+
+from tkinter import ttk
+from tkinter import *
+from tkinter import messagebox
+from tkinter import filedialog
+import sqlite3
+
+root = Tk()
+root.title("Stok Ekranı")
+root.geometry("1000x500-0+100")
+
+baslikkk = Label(text="Stok", font=("Calibri",25), bd=5 , bg="Light Gray" , width=60)
+baslikkk.place(x=1, y=1)
+
+btn_Ekle = Button(text=("Ürün Ekle"), bg=("Powder Blue"),width=25,height=2)
+btn_Ekle.place(x=100, y=70)
+btn_Cikar = Button(text=("Ürün Çıkart"), bg=("Powder Blue"),width=25,height=2)
+btn_Cikar.place(x=100, y=120)
+btn_MenuDonn = Button(text=("Menüye Dön"), bg=("Powder Blue"),width=25,height=2)
+btn_MenuDonn.place(x=100, y=170)
+
+Urun = Label(text="Ürün", font=("Calibri",15))
+Urun.place(x=500, y=100)
+Adet = Label(text="Adet", font=("Calibri",15))
+Adet.place(x=500, y=150)
+
+Adett = Entry(text="Adet", font=("Calibri",15))
+Adett.place(x=570, y=150)
+
+tree = ttk.Treeview(root, columns=("id", "Urun Ad", "Adet"),
+                    selectmode='extended')
+
+tree.heading("id", text="ID", anchor=W)
+tree.heading("Urun Ad", text="Ürün Adı", anchor=W)
+tree.heading("Adet", text="Adet", anchor=W)
+
+tree.column("#0", stretch=NO, minwidth=0, width=0)
+tree.column("#1", stretch=NO, minwidth=0, width=200)
+tree.column("#2", stretch=NO, minwidth=0, width=200)
+
+
+tree.place(x=100, y=240, width=850, height=250)
+
+root.mainloop()
