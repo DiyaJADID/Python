@@ -1,0 +1,33 @@
+i = 1
+while i <= 5:
+  print(i)
+  i += 1
+
+
+isim = input("Adınızı ve soyadınızı giriniz:")
+for i in range (1,6);
+print(isim)
+
+
+
+
+
+from random import *
+
+sec = randint(1,100)
+sayac = 0
+
+while True:
+    sayac +=1
+    sayi = int(input("0 dan 100 e kadar bir sayı giriniz:"))
+
+    if sayi < sec:
+        print("Daha büyük bir sayı seçmeniz gerekiyor.")
+
+    elif sayi > sec:
+        print("Daha küçük bir sayı seçmeniz gerekiyor. ")
+
+    else:
+        print("Tabrikler doğru sayıyı seçtiniz.")
+
+        break
