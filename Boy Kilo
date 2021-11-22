@@ -1,0 +1,11 @@
+boy = float(input("Boyunuzu Yazınız:"))
+kilo = int(input("Kilonuzu Giriniz:"))
+
+hesaplama = kilo / (boy * boy)
+
+if hesaplama < 18.5:
+    print("İdeal kilonun altındasınız")
+elif hesaplama < 25:
+    print("Kilonuz Normal")
+else:
+    print("ideal kilonun üstündesiniz")
