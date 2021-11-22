@@ -1,0 +1,9 @@
+vize = int(input("Vize Notunuzu Giriniz:"))
+final = int(input("Final Notunuzu Giriniz:"))
+
+ortalama = vize * (4/10) + final * (6/10)
+
+if ortalama < 50:
+    print("Dersten Geçemediniz.")
+else:
+    print("Dersten Geçtiniz.")
