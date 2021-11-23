@@ -1,0 +1,15 @@
+def yildiz():
+    print("Yıldızdan Üçgen")
+    for satir in range(1,5):
+
+         print("*" * satir)
+
+yildiz()
+
+def yildizciz():
+    yukseklik = 5
+    print("Yıldız Üçgeni")
+    for i in range(1,yukseklik):
+        print(" " * (yukseklik - i) , "*" * (i * 2 - 1))
+
+yildizciz()
