@@ -1,0 +1,32 @@
+from tkinter import *
+
+Pencere = Tk()
+Pencere.title("Not Defteri")
+Pencere.geometry("400x350")
+
+Baslik = Label(text="Not Defteri" , font=("Calibri",15))
+Baslik.place(x=1,y=1)
+
+Metin = Label(text="Bir Metin Giriniz:", font=("Calibri",15))
+Metin.place(x=35,y=90)
+
+Giris = Entry(width=25)
+Giris.place(x=35,y=120)
+
+Ekle = Button(text=("Ekle"), fg=("Black"), width=15)
+Ekle.place(x=45,y=180)
+
+Sil = Button(text=("Sil"), fg=("Black"), width=15)
+Sil.place(x=45,y=210)
+
+HepsiniSil = Button(text=("Hepsini Sil") ,fg=("Black"), width=15)
+HepsiniSil.place(x=45,y=240)
+
+Cikis = Button(text=("Çıkış"), fg=("Black"), width=15, command=exit)
+Cikis.place(x=45,y=270)
+
+Tablo = Listbox(width=30)
+Tablo.place(x=200,y=150)
+
+Pencere.mainloop()
+
